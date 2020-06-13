@@ -55,7 +55,7 @@ Take below example from module_bp_java_deps.json:
 
 ### How to generate module*.json
 Inside this project, the module*.json files are located in ./modules/[aosp branch]/module*.json. Below are the instructions to manually generate module json from aosp source.
-1. Download whole android source code project. 
+1. Download whole android source code project.   
 Follow the steps in 
 https://source.android.com/setup/start
 https://source.android.com/setup/build/downloading
@@ -66,7 +66,7 @@ https://source.android.com/setup/build/downloading
 - $lunch aosp_arm-userdebug
 - $aidegen
 
-*Please just press <ENTRY> if aidegen process asking you any question. since the goal of this steps is to generate module info file only. we don't need to fully launch an ide to implement any code.
+*Please just press ENTRY if aidegen process asking you any question. since the goal of this steps is to generate module info file only. we don't need to fully launch an ide to implement any code.
 
 
 3. Find module-info.json.
