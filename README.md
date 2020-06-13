@@ -11,14 +11,15 @@ Action TODO:
 4. A script to continuously generate module*.json from various android versions.  
   
 ## The dependency info in modules*.json
-There are three kinds of module json in aosp which are all the intermediate files generated while building android source.
+There are three kinds of module json in aosp which are all the intermediate files generated while building android source:
 - module-info.json, created by make build system
 - module_bp_cc_deps.json, created by Soong build system
 - module_bp_java_deps.json, crewated by Soong build system 
 
-make build system is going to be deprecated and will be replaced by [Soong build](https://source.android.com/setup/build). Before that we still consider supporting the module-info.json created for make.
+make build system is going to be deprecated and will be replaced by [Soong build](https://source.android.com/setup/build). Before that we still consider supporting the module-info.json created for make. 
 
-One dependency example in module_bp_java_deps.json could be as below:
+We could parse these three json files if we want to collect the dependeicues of aosp modules.
+Take below example from module_bp_java_deps.json:
 ```
 	"Stk": {
 		"dependencies": [
@@ -48,9 +49,31 @@ One dependency example in module_bp_java_deps.json could be as below:
 	},
 ```
 
-"Stk" is one of android modules, the modules are playing different role in aosp, e.g. They could be Apps, library or tools.   
-"srcs" under "Stk" is listing all the source code in Stk module.  
-"dependencies" under "Stk" is listing what other modules this Stk is depending on. In this case, "Stk" is depending on "telephony-common" and "com.google.android.material_material" so we could keep looking into "telephony-common" for digging out more implict dependencies.  
+"Stk" is one of android modules, the modules are playing different role in aosp, e.g. They could be Apps, library or tools.  
+"srcs" under "Stk" is listing all the source code in Stk module.
+"dependencies" under "Stk" is listing what other modules this Stk is depending on. In this case, "Stk" is depending on "telephony-common" and "com.google.android.material_material" so we could keep looking into "telephony-common" for digging out more implict dependencies.
 
 ### How to generate module*.json
-(TBD)
+Inside this project, the module*.json files are located in ./modules/[aosp branch]/module*.json. Below are the instructions to manually generate module json from aosp source.
+1. Download whole android source code project. 
+Follow the steps in 
+https://source.android.com/setup/start
+https://source.android.com/setup/build/downloading
+
+2. Generate the module*.json files from android source. ([reference](https://source.android.com/setup/build/building))
+- cd to [your-aosp-root] folder
+- $source build/envsetup.sh
+- $lunch aosp_arm-userdebug
+- $aidegen
+
+*Please just press <ENTRY> if aidegen process asking you any question. since the goal of this steps is to generate module info file only. we don't need to fully launch an ide to implement any code.
+
+
+3. Find module-info.json.
+If you were choosing aosp_arm-userdebug target to build the module-info.json could be found in path:  
+[your-aosp-root]/out/target/product/generic/module-info.json
+
+4. Find other module json files under
+[your-aosp-root]/out/soong/module_bp_cc_deps.json and   
+[your-aosp-root]/out/soong/module_bp_java_deps.json
+
