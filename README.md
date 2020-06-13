@@ -64,7 +64,7 @@ https://source.android.com/setup/build/downloading
 - cd to [your-aosp-root] folder
 - $source build/envsetup.sh
 - $lunch aosp_arm-userdebug
-- $aidegen
+- $aidegen -s -n
 
 *Please just press ENTRY if aidegen process asking you any questions since the goal of this steps is to generate module info file only. We don't really need to fully launch an ide to implement any code.
 
