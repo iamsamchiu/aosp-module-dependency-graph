@@ -66,8 +66,7 @@ https://source.android.com/setup/build/downloading
 - $lunch aosp_arm-userdebug
 - $aidegen
 
-*Please just press ENTRY if aidegen process asking you any question. since the goal of this steps is to generate module info file only. we don't need to fully launch an ide to implement any code.
-
+*Please just press ENTRY if aidegen process asking you any questions since the goal of this steps is to generate module info file only. We don't really need to fully launch an ide to implement any code.
 
 3. Find module-info.json.
 If you were choosing aosp_arm-userdebug target to build the module-info.json could be found in path:  
