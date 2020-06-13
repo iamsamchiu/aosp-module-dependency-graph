@@ -48,9 +48,9 @@ One dependency example in module_bp_java_deps.json could be as below:
 	},
 ```
 
-"Stk" is one of android modules, the modules are playing different role in aosp, e.g. They could be Apps, library or tools.  
-"srcs" under "Stk" is listing all the source code in Stk module.
-"dependencies" under "Stk" is listing what other modules this Stk is depending on. In this case, "Stk" is depending on "telephony-common" and "com.google.android.material_material" so we could keep looking into "telephony-common" for digging out more implict dependencies.
+"Stk" is one of android modules, the modules are playing different role in aosp, e.g. They could be Apps, library or tools.   
+"srcs" under "Stk" is listing all the source code in Stk module.  
+"dependencies" under "Stk" is listing what other modules this Stk is depending on. In this case, "Stk" is depending on "telephony-common" and "com.google.android.material_material" so we could keep looking into "telephony-common" for digging out more implict dependencies.  
 
 ### How to generate module*.json
 (TBD)
